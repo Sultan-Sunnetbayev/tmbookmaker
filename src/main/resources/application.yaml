@@ -1,0 +1,52 @@
+spring:
+  main:
+    allow-circular-references: true
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration
+  jpa:
+    hibernate:
+      ddl-auto: validate
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/tmbookmakerdb
+    username: sultan
+    password: postgres.
+  flyway:
+    baseline-on-migrate: true
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/tmbookmakerdb
+    user: sultan
+    password: postgres.
+  servlet:
+    multipart:
+      max-request-size: 50MB
+      max-file-size: 500MB
+
+server:
+  port: 7020
+  error:
+    include-exception: true
+    include-binding-errors: always
+
+file:
+  upload:
+    path: /home/sultan/data/files
+
+default:
+  limit-sms: 1000
+  activation-code:
+    life-time: 10M
+
+sms-service:
+  host: 'http://217.174.231.194:3216/api/v1/send-sms'
+  authorization: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJtZXNzYWdlIjoic2VuZCBzbXMgc3VjY2VzcyIsI
+                  mRhdGUiOiJGcmkgSnVuIDE3IDE2OjA3OjEyIFRNVCJ9.Ijx7RNJ1qJxbDM0GHrA9SiU3QOhLfRIJSgyZ2aHwD4o'
